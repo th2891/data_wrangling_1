@@ -17,6 +17,7 @@ litters_df = janitor::clean_names(litters_df)
 ```
 
 ## 'Select' --Dplyer funcitons (part of tidyverse)
+  operates on columns
 
 Choose some columns and not others
 
@@ -67,7 +68,61 @@ Relocate & not do anything else
 relocate(litters_df, litter_number)
 ```
 
+## 'filter' function
+  intended to remove or keep rows that you're interested in for    analysis
+  operates on rows (where as select operates on columns)
+  - have to give it some condition
+     either true or fasle (if true then it will be kept)
+ 
+ looking at gestational weight on day zero only where < 22 
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
 
-  
+  gestational weight on day zerio where >= 22
+
+```{r}
+filter(litters_df, gd0_weight >= 22)
+```
+
+gestational age == 20 (USE 2 EQUAL SIGNS, asking a question, not assigning to value to this variable)
+
+```{r}
+filter(litters_df, gd_of_birth == 20)
+```
+
+
+see where this is true, and then flip
+```{r}
+filter(litters_df, !(gd_of_birth == 20))
+```
+
+does the same thing but ^ above is better for more complicated statements
+```{r}
+filter(litters_df, gd_of_birth != 20)
+```
+
+
+Want 2 things to be true
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
+```
+
+Character variables
+```{r}
+filter(litters_df, group == "Con7")
+```
+
+```{r}
+filter(litters_df, group == "Mod8")
+```
+
+2 character variables at the same time = to con 7 OR mod 8 
+  %in% = where group is in either of these 2 options
+```{r}
+filter(litters_df, group %in% c("Con7", "Mod8"))
+```
+
+
 
 
