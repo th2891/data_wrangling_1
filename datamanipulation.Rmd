@@ -141,4 +141,20 @@ Creating & modifying variables at the same time
 ```
 
 
+## 'arrange'
+Goal is to put things in order
+Primarily need to do if updating a data set to inspect in a way that's more intuitive than what's been put in
+- shouldn't change analysis or resutls 
+- helpful for knowning what's going on 
+- alphabetical, numberical
+
+order the pups born alive smallest to largest
+```{r}
+arrange(litters_df, pups_born_alive)
+```
+
+arrange 2 variables at the same time
+```{r}
+arrange(litters_df, pups_born_alive, gd0_weight)
+```
 
