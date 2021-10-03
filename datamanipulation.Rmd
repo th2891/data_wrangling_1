@@ -16,3 +16,58 @@ litters_df = read.csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
 
+## 'Select' --Dplyer funcitons (part of tidyverse)
+
+Choose some columns and not others
+
+```{r}
+select(litters_df, group, gd0_weight)
+```
+
+specify range of columns you want to include using ':'
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+Specify columns want to lose
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming Columns (and selecting columns want to keep)...
+```{r}
+select(litters_df, GROUP = group, LITTER_NUMBER = litter_number)
+```
+
+Just renaming - not selecting
+```{r}
+rename(litters_df, GROUP = group, LITTER_NUMBER = litter_number)
+```
+
+Helper functions 
+  Used in specific context to accomplish something but wouldn't   out of that context 
+  
+  starts with, ends with, contains everything
+  
+  Select helpers
+  
+  selects all variables that start with "gd" 
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+Move selected variable to the beginning of view (stil keeps everything else)
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+Relocate & not do anything else 
+```{r}
+relocate(litters_df, litter_number)
+```
+
+
+  
+
+
