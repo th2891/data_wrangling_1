@@ -18,7 +18,7 @@ library(tidyverse)
 
 ## Pivoting from wide format to long format
 
-    ### pivot_longer
+### pivot\_longer
 
 Load the pulse data
 
@@ -62,3 +62,28 @@ pulse_data =
   relocate(id, visit) %>% 
   mutate(visit = recode(visit, "bl" = "00m"))
 ```
+
+## ‘pivot\_wider’
+
+Make up some data to show pivot wider
+
+``` r
+analysis_result = 
+  tibble(
+      group = c("treatment", "treatment", "placebo", "placebo"), 
+      time = c("pre", "post", "pre", "post"),
+      mean = c (4, 8, 3.5, 4)
+  )
+
+analysis_result %>% 
+    pivot_wider(
+        names_from = "time", 
+        values_from = "mean"
+    )
+```
+
+    ## # A tibble: 2 × 3
+    ##   group       pre  post
+    ##   <chr>     <dbl> <dbl>
+    ## 1 treatment   4       8
+    ## 2 placebo     3.5     4
